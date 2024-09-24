@@ -1,7 +1,7 @@
 
 
+https://www.segger.com/downloads/jlink/?utm_source=www&utm_medium=top_menu     //jlink 烧录软件
 
-
-https://www.nordicsemi.com/Software-and-Tools/Development-Tools/nRF-Command-Line-Tools/Download#infotabs
+https://www.nordicsemi.com/Software-and-Tools/Development-Tools/nRF-Command-Line-Tools/Download#infotabs   //Command-Line软件
 
 nRF5x command line tools包括Jlink驱动以及Nordic自己开发的一些命令行工具，具体包括Jlink驱动，nrfjprog，nrfutil以及mergehex等。
