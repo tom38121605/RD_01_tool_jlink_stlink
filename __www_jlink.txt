@@ -1,0 +1,12 @@
+
+jlink 烧录软件下载:
+https://www.segger.com/downloads/jlink/?utm_source=www&utm_medium=top_menu     //
+
+
+https://www.nordicsemi.com/Software-and-Tools/Development-Tools/nRF-Command-Line-Tools/Download#infotabs   //Command-Line软件
+
+nRF5x command line tools包括Jlink驱动以及Nordic自己开发的一些命令行工具，具体包括Jlink驱动，nrfjprog，nrfutil以及mergehex等。
+
+
+原装正版jlink烧录器购买：
+https://www.mouser.cn/c/?q=arm%20emulator&amp;OrgTerm=arm%E4%BB%BF%E7%9C%9F%E5%99%A8&amp;NewSearch=1
