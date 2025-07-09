@@ -1,6 +1,6 @@
 
 jlink ÉÕÂ¼Èí¼şÏÂÔØ:
-https://www.segger.com/downloads/jlink/?utm_source=www&utm_medium=top_menu     //
+https://www.segger.com/downloads/jlink/?utm_source=www&utm_medium=top_menu      
 
 
 https://www.nordicsemi.com/Software-and-Tools/Development-Tools/nRF-Command-Line-Tools/Download#infotabs   //Command-LineÈí¼ş
@@ -9,4 +9,7 @@ nRF5x command line tools°üÀ¨JlinkÇı¶¯ÒÔ¼°Nordic×Ô¼º¿ª·¢µÄÒ»Ğ©ÃüÁîĞĞ¹¤¾ß£¬¾ßÌå°üÀ
 
 
 Ô­×°Õı°æjlinkÉÕÂ¼Æ÷¹ºÂò£º
-https://www.mouser.cn/c/?q=arm%20emulator&amp;OrgTerm=arm%E4%BB%BF%E7%9C%9F%E5%99%A8&amp;NewSearch=1
+https://shop.segger.com/debug-trace-probes/debug-probes/j-link/                                                                                         //segger ¹ÙÍø
+https://www.mouser.cn/c/?q=arm%20emulator&amp;OrgTerm=arm%E4%BB%BF%E7%9C%9F%E5%99%A8&amp;NewSearch=1  //Ã³Ôó
+
+
