@@ -1,0 +1,15 @@
+
+
+nrfutil dfu usb-serial -p %1 -pkg %2
+
+
+例如：  
+
+nrfutil dfu usb-serial -p COM3 -pkg   c:\update.zip    //把update.zip 通过串口COM3更新到mcu中去   （待验证）
+
+
+
+
+
+
+

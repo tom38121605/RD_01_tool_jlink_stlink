@@ -3,6 +3,15 @@ Run "program.bat COM# firmware.zip"
 说明： nrfprog可通过 mbr和bootloader升级zip文件
 
 
+   //program.bat  bootload.hex
+       nrfjprog --program   %文件路径%\mbr_nrf52_2.4.1_mbr.hex
+       nrfjprog --program   bootload.hex\mbr_nrf52_2.4.1_mbr.hex
+
+   //bootload.bat   COM3   c:\update.zip
+       nrfutil dfu usb-serial -p COM3 -pkg   c:\update.zip
+
+
+
 ==============ommo==bat文件=====================
 
 set NRFJPROG_ROOT="C:\Program Files\Nordic Semiconductor\nrf-command-line-tools\bin"     //设置 NRFJPROG_ROOT 路径
@@ -25,7 +34,7 @@ if %errorlevel% neq 0 goto FAIL
 %NRFJPROG_ROOT%\nrfjprog --program %1 --family NRF52 --clockspeed %CLOCKSPEED%      //再烧写自己的zip升级文件  
 if %errorlevel% neq 0 goto FAIL
 
-%NRFJPROG_ROOT%\nrfjprog --rbp ALL --family NRF52 --log --clockspeed %CLOCKSPEED%           //开启读保护
+%NRFJPROG_ROOT%\nrfjprog --rbp ALL --family NRF52 --log --clockspeed %CLOCKSPEED%           //加锁读保护
 if %errorlevel% neq 0 goto FAIL
 
 %NRFJPROG_ROOT%\nrfjprog --debugreset --family NRF52 --log --clockspeed %CLOCKSPEED%    
