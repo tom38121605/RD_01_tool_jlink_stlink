@@ -1,15 +1,30 @@
-Run "program.bat COM# firmware.zip"
+Run "program.bat COM# firmware.zip"      //好像应该是 bootload.bat  COM# firmware.zip
 
 说明： nrfprog可通过 mbr和bootloader升级zip文件
 
 
    //program.bat  bootload.hex
        nrfjprog --program   %文件路径%\mbr_nrf52_2.4.1_mbr.hex
-       nrfjprog --program   bootload.hex\mbr_nrf52_2.4.1_mbr.hex
+       nrfjprog --program   bootload.hex 
 
    //bootload.bat   COM3   c:\update.zip
        nrfutil dfu usb-serial -p COM3 -pkg   c:\update.zip
 
+
+
+
+
+批处理操作步骤
+
+1. 先用jflash lite烧录一遍 13506-master_siu_2v8-bootloader-PID79-v6002_RC0.hex   （有时这步可以省略）
+
+2. 用program.bat  烧录bootloader
+
+    program  C:\workspace\ommo_nrf\flash_files\250522_Release6002_RC0\13506-master_siu_2v8-bootloader-PID79-v6002_RC0.hex
+
+3. 用bootload.bat 上传zip文件
+
+   bootload.bat  COM7  C:\workspace\ommo_nrf\flash_files\250522_Release6002_RC0\13506-master_siu_2v8-standard-3p0mm-PID79-v6002_RC0.zip
 
 
 ==============ommo==bat文件=====================
@@ -31,7 +46,7 @@ if %errorlevel% neq 0 goto FAIL
 %NRFJPROG_ROOT%\nrfjprog --program   %文件路径%\mbr_nrf52_2.4.1_mbr.hex --family NRF52 --clockspeed %CLOCKSPEED%    //先烧录mbr文件
 if %errorlevel% neq 0 goto FAIL
 
-%NRFJPROG_ROOT%\nrfjprog --program %1 --family NRF52 --clockspeed %CLOCKSPEED%      //再烧写自己的zip升级文件  
+%NRFJPROG_ROOT%\nrfjprog --program %1 --family NRF52 --clockspeed %CLOCKSPEED%      //再烧写自己的bootload的hex文件  
 if %errorlevel% neq 0 goto FAIL
 
 %NRFJPROG_ROOT%\nrfjprog --rbp ALL --family NRF52 --log --clockspeed %CLOCKSPEED%           //加锁读保护
@@ -41,11 +56,12 @@ if %errorlevel% neq 0 goto FAIL
 if %errorlevel% neq 0 goto FAIL
 
 echo SUCCESS
-exit /b 0
+exit /b 0                                                       //退出bat文件，并返回一个正常代码0
 
 :FAIL
 echo An ERROR occoured!
-exit /b %errorlevel%
+exit /b %errorlevel%                                  //退出bat文件，并返回一个错误代码
+
 
 
 
