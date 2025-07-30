@@ -1,0 +1,7 @@
+
+
+1. ßMÈë¹ÙÍøÍøÒ³
+   https://www.segger.com/products/production/flasher/tools/j-flash/supported-nor-flashes/
+
+2. µã»÷²Ëµ¥tools   --  j-flash  --  supported-nor-flashes
+
