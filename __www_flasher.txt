@@ -1,0 +1,33 @@
+
+
+1. 官网
+   www.segger.com/flasher-arm
+
+2.  下载flasher烧录软件  （两者相同）
+
+    https://www.segger.com/downloads/flasher/
+    https://www.segger.com/downloads/flasher#FlasherSoftwareAndDocumentationPack
+
+
+3. flasher使用说明 
+
+   https://kb.segger.com/UM08022_Flasher                            //有硬件引脚图等
+   https://kb.segger.com/Flasher_-_Working_with_Flasher
+
+
+
+
+
+====================答疑==================================
+
+1.如何查看Flasher ARM内置128MB存储空间的内容？
+掉电状态下按住Flasher的“开始/停止”按钮，或是“ PROG”按钮不松开，然后通过USB将Flasher ARM工具连接到电脑，此时电脑就会检测Flasher ARM为一个大容量存储设备了，相当于一个U盘。在此模式下，我们可以格式化、可以将配置+数据文件手动放拷贝进来，也可以读取其中存储的日志文件。
+
+2.在选择芯片型号时，找不到MM32系列的芯片型号怎么办？
+在MM32官网上提供了J-Link的Pack安装包，这同样适用于Flasher ARM工具的Flasher软件，将J-Link软件安装目录下的Devices文件夹拷贝到Flasher软件安装目录就可以了。
+
+
+
+
+
+
