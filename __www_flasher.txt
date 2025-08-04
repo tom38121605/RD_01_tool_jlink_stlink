@@ -15,6 +15,10 @@
    https://kb.segger.com/Flasher_-_Working_with_Flasher
 
 
+4. 加密烧录， 限制下载次数
+
+   https://www.segger.com/products/production/flasher/technology/authorized-flashing/
+
 
 
 
