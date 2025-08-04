@@ -3,7 +3,7 @@
 [GENERAL]
   aATEModuleSel[24] = 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
   ConnectMode = 0
-  CurrentFile = ""
+  CurrentFile = "F:\test37\V1183.hex"
   DataFileSAddr = 0x00000000
   GUIMode = 0
   HostName = ""
