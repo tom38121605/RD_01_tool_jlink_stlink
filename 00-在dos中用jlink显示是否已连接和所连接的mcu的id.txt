@@ -1,0 +1,24 @@
+
+（实际测试，并没有显示nrf52832的id）
+
+
+如果 USB 驱动程序工作正常，并且 Flasher 已连接到主机系统，则可以将 Flasher 连接到目标硬件。
+
+然后启动 J-Link 命令行工具 JLink.exe，它现在应该会显示正常的 Flasher 相关信息，此外还会报告已找到 JTAG 目标以及目标核心 ID。下面的屏幕截图显示了 JLink.exe 的输出。
+
+
+C:\Program Files\SEGGER\JLink_V794e>jlink
+SEGGER J-Link Commander V7.94e (Compiled Jan 15 2024 15:20:36)
+DLL version V7.94e, compiled Jan 15 2024 15:18:46
+
+Connecting to J-Link via USB...O.K.
+Firmware: J-Link V9 compiled May  7 2021 16:26:12
+Hardware version: V9.20
+J-Link uptime (since boot): N/A (Not supported by this model)
+S/N: 59800885
+License(s): RDI, GDB, FlashDL, FlashBP, JFlash
+VTref=3.325V
+
+
+Type "connect" to establish a target connection, '?' for help
+J-Link>
