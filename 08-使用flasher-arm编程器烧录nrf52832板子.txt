@@ -1,0 +1,177 @@
+
+
+0. flasher arm编程器的引脚 和 jlink的引脚，编号上是一样的
+0. flasher arm的VTref引脚没有输出电压不能向目标板供电， 而jlink一般有输出电压 （或可以向目标板供电--待验证）
+
+
+------------------------------- 普通连线烧录 ------------ok-----------------------
+
+1. 连接flasher arm上的 swdio, swclk, VTref, gnd ， 到nrf52832板
+
+2. 把flasher arm 插入到pc， 给nrf52832板上电
+
+3. 打开j-flasher软件， 配置好nrf2832工程
+
+4. 导入要烧录的hex文件，点击菜单 File -- open file data，导入文件
+
+5. 点击菜单 Target  -- connect， 一般会连接成功，查看successful信息
+
+6. 点击菜单 Target  -- production Programming， 一般会连接成功，查看successful信息
+
+
+------------------------------- 普通的离线独立烧录 ------（待验证）-----------------------------
+
+1. 连接flasher arm上的 swdio, swclk, VTref, gnd ， 到nrf52832板
+
+2. 把flasher arm 插入到pc， 给nrf52832板上电
+
+3. 打开j-flasher软件， 配置好nrf2832工程
+
+4. 导入要烧录的hex文件，点击菜单 File -- open file data，导入文件
+
+5. 点击菜单  File -> Download config & data file to Flasher， 一般会下载成功，查看successful信息（ 不需要先connect）
+
+6. 断开目标板电源， 从PC拔出flasher arm
+
+7.  先按住PROG按钮，用usb线连接flasher arm 到  PC， 然后flasher arm变成一个u盘
+
+8. 看u盘里面的文件，有下面2个文件：
+   1).  Flasher.cfg
+   2).  Flasher.dat
+
+
+
+
+
+
+
+
+
+------------------------------- 加密的离线独立烧录 -----（待验证）------------------------------
+
+1. 连接flasher arm上的 swdio, swclk, VTref, gnd ， 到nrf52832板
+
+2. 把flasher arm 插入到pc， 给nrf52832板上电
+
+
+
+3.  打开 J-Link Commander , 输入 securearea create 回车，成功后会返回：“Creating secure area...OK ”
+
+4. 打开j-flasher软件， 配置好nrf2832工程
+
+5. 导入要烧录的hex文件，点击菜单 File -- open file data，导入文件
+
+
+
+6. 点击菜单  File -> Download config & data file to Flasher， 一般会下载成功，查看successful信息（ 不需要先connect）
+
+7. 断开目标板电源， 从PC拔出flasher arm
+
+8.  先按住PROG按钮，用usb线连接flasher arm 到  PC， 然后flasher arm变成一个u盘
+
+9. 看u盘里面的文件，有下面2个文件：
+   1).  Flasher.cfg
+   2).  Flasher.dat
+
+10. 根目录中，创建一个名为“_SECURE”的文件夹，并将根目录中的所有文件移动到该文件夹中（.log 文件除外，如果存在）
+
+11.  拔出flasher编程器，然后不按PROG按钮，在普通模式下，把flasher编程器 插入PC，等待指示灯变绿  
+   （这一步将完成加密操作， 并且会把_SECURE 文件夹及里面的所有文件，从公开区域移到加密区域）
+
+实际使用时，下面用于验证的3步可以省略
+//12.  拔下flasher编程器，然后按住 PROG 按钮，再重新把flasher编程器插入到PC, 会进入U盘文件访问模式
+//13.  确保 _SECURE 文件夹已删除。只有 .log 文件可见，表示编程器FLASHER arm已成功配置成读保护模式
+//14.  拔出flasher编程器，然后不按PROG按钮，在普通模式下，把flasher编程器 插入PC，等待指示灯变绿  
+
+15. 编程器Flasher 现在配置为独立模式，可以与 PC 断开连接，只需使用 USB 电源即可运行
+
+16. 插入要烧录的板子，然后按PROG按钮开始编程。绿灯按阶段显示如下：
+     a. 6 Hz blinking = Erasing
+     b. 2 Hz blinking = Programming
+     c. 5 Hz blinking = Verifying
+
+17. 如果绿灯长亮，且红灯熄灭，则表示烧录成功
+
+18. 不论哪种情况，可再次按下PROG按钮，重新烧录
+
+19. 错误消息，可在FLASHER.LOG文件中查看
+
+20. Cntdown 文件仅在一次刷写成功时才会递减，当其达到 0 时设备将停止刷写
+
+
+
+
+
+
+
+
+
+
+------------------------------- 在flasher arm上验证已加密 ----（待验证）-------------------------------
+
+1.  按照上述步骤设置安全区域并将文件移动到 _SECURE 文件夹。
+
+2.  拔出flasher编程器，然后不按PROG按钮，在普通模式下，把flasher编程器 插入PC，等待指示灯变绿  
+   （这一步将完成加密操作， 并且会把_SECURE 文件夹及里面的所有文件，从公开区域移到加密区域）
+
+3.  拔下flasher编程器，然后按住 PROG 按钮，再重新把flasher编程器插入到PC, 会进入U盘文件访问模式
+
+4.  确保 _SECURE 文件夹已删除，并且没有可见的 .dat 或 .cfg 文件。只有 .log 文件应保留在根目录中
+
+5. 如果文件包已被移到安全分区，并且在文件访问模式下不可见。则表示编程器FLASHER arm已成功配置成读保护模式
+
+
+
+
+
+------------------------------- 在目标板上验证已加密 --------（待验证）---------------------------
+
+
+1. 在把编程器flasher arm配置成已加密的standalone 模式后，把目标板插入到编程器fasher，按下PROG按钮，开始烧录
+
+2. 等待编程器上的小灯变成绿灯常亮 （表示已完成一次烧录）
+
+3. 保持目标板和编程器flasher连接，打开j-flash软件，根据mcu配置好相关参数
+
+4. 菜单Target > Connect连接目标板，再菜单Manual Programming > Read back > Entire chip读取芯片内的hex文件
+
+5. 在弹出的新窗口中，找到内存地址 0x10001028  (通过hex上面的go-to搜索可快速找到)
+
+6. 检查确认，在地址0x10001208的地方，开始的32个字节都是0
+
+7. 拔掉目标板上的电源，再重新插上电源
+
+8. 点击菜单Target > Connect，会弹出一个窗口，提示设备已被设置为安全模式，如果尝试connect，会清空所有内存
+
+9. 如果出现这个提示框，则表示，设备已成功设置为读保护模式。
+
+
+补充说明1： 内存地址 0x10001028如何确定，请参看nRF52832_PS_v1.2.pdf ，第54-55页的 14.1  UICR的Registers
+                 起始地址：                     0x10001000
+                 APPROTECT偏移地址：   0x208
+
+补充说明2： 用jlink非加密烧录后，再读取，在0x10001208的地方开始的32个字节都是F
+
+
+
+
+------------------------------- 删除flasher arm上的加密程序 --------（待完成）---------------------------
+
+
+
+securearea remove
+
+
+
+------------------------------- nrf系列芯片的hex自带禁止读取的加密功能 --------（待验证）---------------------------
+
+1. 请参看APPROTECT寄存器，nRF52832_PS_v1.2.pdf ，第54-55页的 14.1  UICR的Registers
+                 起始地址：                     0x10001000
+                 APPROTECT偏移地址：   0x208
+
+
+2. 某些微控制器（例如 nrf52833）自动配置了回读保护，并且该功能无法由编程器禁用。如有需要，请咨询 Dmytro 了解更多信息。
+
+
+
+
