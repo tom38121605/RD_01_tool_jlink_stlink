@@ -3,6 +3,9 @@ jlink 烧录软件下载:
 https://www.segger.com/downloads/jlink/?utm_source=www&utm_medium=top_menu      
 
 
+fasher  烧录软件下载:
+https://www.segger.com/downloads/flasher#FlasherSoftwareAndDocumentationPack
+
 https://www.nordicsemi.com/Software-and-Tools/Development-Tools/nRF-Command-Line-Tools/Download#infotabs   //Command-Line软件
 https://www.nordicsemi.com/Products/Development-tools/nrf-util                                                                              //nrfutil 软件
 

@@ -1,0 +1,16 @@
+
+
+1. 插入 jlink烧录器后，在设备管理器里面看到有以下两个设备，其中 “Bulk interface”有个黄色感叹号
+     。com#
+     。Bulk interface
+
+2. 两个设备都按以下方法，更新驱动
+
+     。把目录 segger，拷贝到目录C:\driver
+     。驱动管理器  -- com# -- 右键  -- 更新驱动  --  浏览我的电脑... --  从目录中选择  -- C:\driver\segger
+     。驱动管理器  -- Bulk interface -- 右键  -- 更新驱动  --  浏览我的电脑... --  从目录中选择  -- C:\driver\segger
+
+
+
+
+

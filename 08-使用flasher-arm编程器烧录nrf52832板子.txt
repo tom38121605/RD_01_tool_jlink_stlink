@@ -3,6 +3,10 @@
 0. flasher arm编程器的引脚 和 jlink的引脚，编号上是一样的
 0. flasher arm的VTref引脚没有输出电压不能向目标板供电， 而jlink一般有输出电压 （或可以向目标板供电--待验证）
 
+0.  准备好两个指令
+     securearea create
+
+     securearea remove
 
 ------------------------------- 普通连线烧录 ------------ok-----------------------
 
@@ -41,9 +45,8 @@
 
 
 
-
-
-
+We are currently importing the "secured_sampler_01_otp_bootloader-00.07-036bfbd.hex" file directly. 
+Could you please help check if any additional operations are needed for this step,thanks.
 
 
 
@@ -53,15 +56,13 @@
 
 2. 把flasher arm 插入到pc， 给nrf52832板上电
 
+3.  打开 J-Link Commander , 输入 securearea create 回车，成功后会返回：“Creating secure area...OK ”    //如果里面已有加密分区，则先 securearea remove
+    。运行   ...\jlink_V852\JLink.exe
+    。J-Link> securearea create                    //把128M的u盘，分成两个64M，其中一个64M是加密分区
 
+4. 打开j-flasher软件， 配置好nrf2832工程      //这一步之前，从电脑拔出flasher arm有影响吗   --  应该没有，因为加密分区创建之后，只要不运行 securearea remove就一直存在
 
-3.  打开 J-Link Commander , 输入 securearea create 回车，成功后会返回：“Creating secure area...OK ”
-
-4. 打开j-flasher软件， 配置好nrf2832工程
-
-5. 导入要烧录的hex文件，点击菜单 File -- open file data，导入文件
-
-
+5. 导入要烧录的hex文件，点击菜单 File -- open file data，导入文件 （如bootloader_c011.exe）
 
 6. 点击菜单  File -> Download config & data file to Flasher， 一般会下载成功，查看successful信息（ 不需要先connect）
 
@@ -78,10 +79,10 @@
 11.  拔出flasher编程器，然后不按PROG按钮，在普通模式下，把flasher编程器 插入PC，等待指示灯变绿  
    （这一步将完成加密操作， 并且会把_SECURE 文件夹及里面的所有文件，从公开区域移到加密区域）
 
-实际使用时，下面用于验证的3步可以省略
-//12.  拔下flasher编程器，然后按住 PROG 按钮，再重新把flasher编程器插入到PC, 会进入U盘文件访问模式
-//13.  确保 _SECURE 文件夹已删除。只有 .log 文件可见，表示编程器FLASHER arm已成功配置成读保护模式
-//14.  拔出flasher编程器，然后不按PROG按钮，在普通模式下，把flasher编程器 插入PC，等待指示灯变绿  
+下面3步只用于验证的（实际使用时，可以省略）
+12.  拔下flasher编程器，然后按住 PROG 按钮，再重新把flasher编程器插入到PC, 会进入U盘文件访问模式
+13.  确保 _SECURE 文件夹已删除。只有 .log 文件可见，表示编程器FLASHER arm已成功配置成读保护模式
+14.  拔出flasher编程器，然后不按PROG按钮，在普通模式下，把flasher编程器 插入PC，等待指示灯变绿  
 
 15. 编程器Flasher 现在配置为独立模式，可以与 PC 断开连接，只需使用 USB 电源即可运行
 
@@ -89,6 +90,9 @@
      a. 6 Hz blinking = Erasing
      b. 2 Hz blinking = Programming
      c. 5 Hz blinking = Verifying
+
+
+
 
 17. 如果绿灯长亮，且红灯熄灭，则表示烧录成功
 
