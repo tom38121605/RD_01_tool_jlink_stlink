@@ -1,5 +1,12 @@
 
 
+驱动下载方法一： 
+    下载安装最新的keil版本  -- 拷贝目录 C:\Keil_v5\ARM\Segger 
+
+驱动下载方法二： 在gitcode中有下载  （具体网址待查）
+    https://link.gitcode.com/i/ddaf0e379bbb802fc2965c112c315295?uuid_tt_dd=10_2449863770-1736395869927-763640&isLogin=9&from_id=143071242   //待验证
+
+
 1. 插入 jlink烧录器后，在设备管理器里面看到有以下两个设备，其中 “Bulk interface”有个黄色感叹号
      。com#
      。Bulk interface
