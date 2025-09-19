@@ -4,9 +4,14 @@
 0. flasher arm的VTref引脚没有输出电压不能向目标板供电， 而jlink一般有输出电压 （或可以向目标板供电--待验证）
 
 0.  准备好两个指令
-     securearea create
+     securearea create      //创建加密分区
+     securearea remove      //删除加密分区
 
-     securearea remove
+0. flasher使用说明网址  
+    https://kb.segger.com/UM08022_Flasher                            //有硬件引脚图等 
+    https://kb.segger.com/Flasher_-_Working_with_Flasher
+
+
 
 ------------------------------- 普通连线烧录 ------------ok-----------------------
 
@@ -42,11 +47,6 @@
 8. 看u盘里面的文件，有下面2个文件：
    1).  Flasher.cfg
    2).  Flasher.dat
-
-
-
-We are currently importing the "secured_sampler_01_otp_bootloader-00.07-036bfbd.hex" file directly. 
-Could you please help check if any additional operations are needed for this step,thanks.
 
 
 
@@ -93,7 +93,6 @@ Could you please help check if any additional operations are needed for this ste
 
 
 
-
 17. 如果绿灯长亮，且红灯熄灭，则表示烧录成功
 
 18. 不论哪种情况，可再次按下PROG按钮，重新烧录
@@ -109,9 +108,7 @@ Could you please help check if any additional operations are needed for this ste
 
 
 
-
-
-------------------------------- 在flasher arm上验证已加密 ----（待验证）-------------------------------
+------------------------------- 在flasher arm上验证已加密 ----（OK）-------------------------------
 
 1.  按照上述步骤设置安全区域并将文件移动到 _SECURE 文件夹。
 
@@ -159,13 +156,6 @@ Could you please help check if any additional operations are needed for this ste
 
 
 
-------------------------------- 删除flasher arm上的加密程序 --------（待完成）---------------------------
-
-
-
-securearea remove
-
-
 
 ------------------------------- nrf系列芯片的hex自带禁止读取的加密功能 --------（待验证）---------------------------
 
@@ -175,6 +165,27 @@ securearea remove
 
 
 2. 某些微控制器（例如 nrf52833）自动配置了回读保护，并且该功能无法由编程器禁用。如有需要，请咨询 Dmytro 了解更多信息。
+
+
+
+
+
+--------------------- 一个flasher同时支持烧录nrf52833和stm32c11 (好像flasher arm这个型号没有这个功能) --------------------------
+
+Multiple File Support
+
+
+1. 增加一个FLASHER.INI文件
+
+2. 文件内容
+
+       [FILES]
+       DataFile = "Flasher1.dat"
+       ConfigFile = "Flasher1.cfg"
+
+
+
+
 
 
 
