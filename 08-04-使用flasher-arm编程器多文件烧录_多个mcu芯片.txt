@@ -1,0 +1,15 @@
+
+
+
+--------------------- 一个flasher同时支持烧录nrf52833和stm32c11 (好像flasher arm这个型号没有这个功能) --------------------------
+
+Multiple File Support
+
+
+1. 增加一个FLASHER.INI文件
+
+2. 文件内容
+
+       [FILES]
+       DataFile = "Flasher1.dat"
+       ConfigFile = "Flasher1.cfg"
