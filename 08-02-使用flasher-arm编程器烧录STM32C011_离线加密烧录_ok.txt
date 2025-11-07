@@ -24,11 +24,21 @@
     。运行   ...\jlink_V852\JLink.exe
     。J-Link> securearea create                    //把128M的u盘，分成两个64M，其中一个64M是加密分区
 
-4. 打开j-flasher软件， 配置好STM32C011工程      //这一步之前，从电脑拔出flasher arm有影响吗   --  没有影响，只要不运行 securearea remove就加密分区一直存在
+
+
+
+4. 打开j-flasher软件， 配置好STM32C011工程      //这一步之前，从电脑拔出flasher arm有影响吗   --  没有影响，只要不运行 securearea remove就加密分区一直存在  
+   （这一步在使用nrf芯片时，就是打开jflash工程的时候，要配置为52833的工程）
 
 5. 导入要烧录的hex文件，点击菜单 File -- open file data，导入文件 （如bootloader_c011.exe）
+   （这一步在使用nrf芯片时，要合并另外两个文件）
+    。菜单 file -- merge data file  --  选中 mbr_nrf52_2.4.1_mbr.hex 文件進行合并
+    。菜单 file -- merge data file  --  选中 readBack.hex 文件進行合并   
 
-6. 点击菜单  File -> Download config & data file to Flasher， 一般会下载成功，查看successful信息（ 不需要先connect）
+
+
+
+6. 点击菜单  File -> Download config & data file to Flasher， 一般会下载成功，查看successful信息（ 不需要先connect，这一步跟mcu芯片没有关系）
 
 7. 断开目标板电源， 从PC拔出flasher arm
 
